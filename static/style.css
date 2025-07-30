@@ -531,52 +531,56 @@ body {
         height: 40px;
     }
     
-    .main-container {
-        padding: 1rem 0;
-    }
-    
-    .chat-container {
-        height: 75vh;
-        border-radius: 15px;
-        margin: 0 0.5rem;
-    }
-    
-    .chat-header {
-        padding: 1rem;
-    }
-    
-    .bot-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
+    .action-btn {
+        width: 35px;
+        height: 35px;
     }
     
     .welcome-message {
-        padding: 2rem 1rem;
+        padding: 3rem 1rem;
     }
     
     .welcome-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .welcome-content h2 {
+        font-size: 2rem;
     }
     
     .quick-actions {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
     
     .quick-btn {
-        width: 100%;
-        max-width: 250px;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
     }
     
-    .message-content {
-        max-width: 85%;
+    .messages-container {
+        padding: 1.5rem 1rem;
     }
     
     .input-container {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .input-group {
+        padding: 0.5rem;
+    }
+    
+    .message-input {
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .send-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
     }
     
     .footer {
@@ -601,22 +605,25 @@ body {
         display: none;
     }
     
-    .chat-container {
-        height: 80vh;
-        margin: 0;
-        border-radius: 0;
+    .welcome-content h2 {
+        font-size: 1.75rem;
     }
     
-    .welcome-content h4 {
-        font-size: 1.3rem;
+    .welcome-content p {
+        font-size: 1rem;
     }
     
-    .message-content {
-        max-width: 90%;
+    .quick-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
     }
     
-    .message-text {
-        padding: 0.875rem 1rem;
+    .message {
+        margin-bottom: 1.5rem;
+    }
+    
+    .input-container {
+        padding: 1rem;
     }
 }
 
