@@ -21,6 +21,9 @@
             </a>
             
             <div class="navbar-nav ms-auto d-flex align-items-center">
+                <button class="btn action-btn me-3" id="clearChat" title="Clear Chat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
                 <div class="theme-switcher me-3">
                     <button id="themeToggle" class="btn theme-btn" title="Toggle Theme">
                         <i class="fas fa-moon theme-icon"></i>
@@ -35,73 +38,52 @@
 
     <!-- Main Chat Container -->
     <div class="main-container">
-        <div class="container-fluid h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-md-10 col-lg-8 col-xl-6">
-                    <div class="chat-container">
-                        <!-- Chat Header -->
-                        <div class="chat-header">
-                            <div class="d-flex align-items-center">
-                                <div class="bot-avatar me-3">
-                                    <i class="fas fa-robot"></i>
-                                    <span class="status-indicator"></span>
-                                </div>
-                                <div class="bot-info">
-                                    <h5 class="bot-name mb-1">Medical Assistant</h5>
-                                    <p class="bot-status mb-0">
-                                        <i class="fas fa-circle online-dot me-1"></i>
-                                        Ready to help with medical queries
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="chat-actions">
-                                <button class="btn btn-sm action-btn" title="Clear Chat">
-                                    <i class="fas fa-trash-alt"></i>
+        <!-- Messages Area -->
+        <div id="messageArea" class="messages-container">
+            <div class="welcome-message">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h2>Welcome to MediBot</h2>
+                    <p>Your AI-powered medical assistant is here to help. Ask me about symptoms, medications, treatments, or general health questions.</p>
+                    <div class="quick-actions">
+                        <button class="btn btn-outline-primary quick-btn" data-message="What are the symptoms of diabetes?">
+                            <i class="fas fa-heartbeat me-2"></i>Symptoms of Diabetes
+                        </button>
+                        <button class="btn btn-outline-primary quick-btn" data-message="Tell me about hypertension treatment">
+                            <i class="fas fa-pills me-2"></i>Hypertension Treatment
+                        </button>
+                        <button class="btn btn-outline-primary quick-btn" data-message="What is a healthy diet?">
+                            <i class="fas fa-apple-alt me-2"></i>Healthy Diet Tips
+                        </button>
+                        <button class="btn btn-outline-primary quick-btn" data-message="How to manage stress?">
+                            <i class="fas fa-brain me-2"></i>Stress Management
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <form id="messageForm" class="message-form">
+                            <div class="input-group">
+                                <input type="text" id="messageInput" name="msg" placeholder="Ask me anything about health and medicine..." 
+                                       autocomplete="off" class="form-control message-input" required/>
+                                <button type="submit" class="btn send-btn" id="sendBtn">
+                                    <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
-                        </div>
-
-                        <!-- Messages Area -->
-                        <div id="messageArea" class="messages-container">
-                            <div class="welcome-message">
-                                <div class="welcome-content">
-                                    <div class="welcome-icon">
-                                        <i class="fas fa-hand-holding-heart"></i>
-                                    </div>
-                                    <h4>Welcome to MediBot</h4>
-                                    <p>Your AI-powered medical assistant is here to help. Ask me about symptoms, medications, treatments, or general health questions.</p>
-                                    <div class="quick-actions">
-                                        <button class="btn btn-outline-primary btn-sm quick-btn" data-message="What are the symptoms of diabetes?">
-                                            <i class="fas fa-heartbeat me-1"></i>Symptoms
-                                        </button>
-                                        <button class="btn btn-outline-primary btn-sm quick-btn" data-message="Tell me about hypertension treatment">
-                                            <i class="fas fa-pills me-1"></i>Treatment
-                                        </button>
-                                        <button class="btn btn-outline-primary btn-sm quick-btn" data-message="What is a healthy diet?">
-                                            <i class="fas fa-apple-alt me-1"></i>Nutrition
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Input Area -->
-                        <div class="input-container">
-                            <form id="messageForm" class="message-form">
-                                <div class="input-group">
-                                    <input type="text" id="messageInput" name="msg" placeholder="Ask me anything about health and medicine..." 
-                                           autocomplete="off" class="form-control message-input" required/>
-                                    <button type="submit" class="btn send-btn" id="sendBtn">
-                                        <i class="fas fa-paper-plane"></i>
-                                    </button>
-                                </div>
-                            </form>
-                            <div class="input-footer">
-                                <small class="text-muted">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    This AI assistant provides general medical information. Always consult healthcare professionals for medical advice.
-                                </small>
-                            </div>
+                        </form>
+                        <div class="input-footer">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                This AI assistant provides general medical information. Always consult healthcare professionals for medical advice.
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -200,28 +182,31 @@
             });
 
             // Clear chat functionality
-            $('.action-btn').on('click', function() {
+            $('#clearChat').on('click', function() {
                 $('#messageArea').html(`
-                    <div class="welcome-message">
-                        <div class="welcome-content">
-                            <div class="welcome-icon">
-                                <i class="fas fa-hand-holding-heart"></i>
-                            </div>
-                            <h4>Welcome to MediBot</h4>
-                            <p>Your AI-powered medical assistant is here to help. Ask me about symptoms, medications, treatments, or general health questions.</p>
-                            <div class="quick-actions">
-                                <button class="btn btn-outline-primary btn-sm quick-btn" data-message="What are the symptoms of diabetes?">
-                                    <i class="fas fa-heartbeat me-1"></i>Symptoms
-                                </button>
-                                <button class="btn btn-outline-primary btn-sm quick-btn" data-message="Tell me about hypertension treatment">
-                                    <i class="fas fa-pills me-1"></i>Treatment
-                                </button>
-                                <button class="btn btn-outline-primary btn-sm quick-btn" data-message="What is a healthy diet?">
-                                    <i class="fas fa-apple-alt me-1"></i>Nutrition
-                                </button>
-                            </div>
+                <div class="welcome-message">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h2>Welcome to MediBot</h2>
+                        <p>Your AI-powered medical assistant is here to help. Ask me about symptoms, medications, treatments, or general health questions.</p>
+                        <div class="quick-actions">
+                            <button class="btn btn-outline-primary quick-btn" data-message="What are the symptoms of diabetes?">
+                                <i class="fas fa-heartbeat me-2"></i>Symptoms of Diabetes
+                            </button>
+                            <button class="btn btn-outline-primary quick-btn" data-message="Tell me about hypertension treatment">
+                                <i class="fas fa-pills me-2"></i>Hypertension Treatment
+                            </button>
+                            <button class="btn btn-outline-primary quick-btn" data-message="What is a healthy diet?">
+                                <i class="fas fa-apple-alt me-2"></i>Healthy Diet Tips
+                            </button>
+                            <button class="btn btn-outline-primary quick-btn" data-message="How to manage stress?">
+                                <i class="fas fa-brain me-2"></i>Stress Management
+                            </button>
                         </div>
                     </div>
+                </div>
                 `);
                 // Re-bind quick button events
                 $('.quick-btn').on('click', function() {
